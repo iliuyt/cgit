@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+let cgit = require('../index');
+let program = require('commander');
+let pkg = require('../package.json');
+let chalk = require('chalk');
+
+program.version(pkg.version)
+    .usage('<command> [options]')
+
+// Set help info
+program.on('--help', function () {
+    console.log(chalk.gray('before'));
+    console.log(chalk.green('git clone https://github.com/cofess/hexo-theme-pure.git'));
+    console.log(chalk.gray('after'));
+    console.log(chalk.green('git clone https://github.com.cnpmjs.org/cofess/hexo-theme-pure.git'));
+});
+
+
+program
+    .command('clone')
+    .description('git clone')
+    .action(cgit.clone)
+
+
+// Display help if wrong cmd
+program.action(function (cmd, options) {
+    program.help();
+})
+
+program.parse(process.argv)
