@@ -1,5 +1,5 @@
 {
-  "name": "cgit",
+  "name": "cgit-node",
   "version": "1.0.0",
   "description": "github 加速下载",
   "main": "index.js",
